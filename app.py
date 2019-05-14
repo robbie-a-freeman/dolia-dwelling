@@ -14,9 +14,6 @@ from flask import send_file
 
 import os
 import sys
-sys.path.insert(0, 'static/py')
-
-import fetch
 
 app = Flask(__name__)
 
