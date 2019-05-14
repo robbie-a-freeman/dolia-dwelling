@@ -24,69 +24,39 @@
     margin-top:50px;
   }
 
-  html, body, #map {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    background-color: #FFF;
-    overflow: hidden;
-    font-family: "Trebuchet MS";
-  }
 </style>
 
-<script src="https://js.arcgis.com/3.28/"></script>
-<script>
-  var map, csv;
-
-  require([
-    "esri/map",
-    "esri/layers/CSVLayer",
-    "esri/Color",
-    "esri/symbols/SimpleMarkerSymbol",
-    "esri/renderers/SimpleRenderer",
-    "esri/InfoTemplate",
-    "esri/config",
-    "esri/dijit/Search",
-    "dojo/domReady!"
-  ], function(
-    Map, CSVLayer, Color, SimpleMarkerSymbol, SimpleRenderer, InfoTemplate, esriConfig, Search
-  ) {
-
-    // Use CORS
-    esriConfig.defaults.io.corsEnabledServers.push("earthquake.usgs.gov"); // supports CORS
-
-    // Use proxy if the server doesn't support CORS
-    // esriConfig.defaults.io.proxyUrl = "/proxy/";
-
-    map = new Map("map", {
-      basemap: "satellite",
-      center: [14.487,40.7505],
-      zoom: 16
-    });
-    var search = new Search({
-            map: map
-         }, "search");
-    csv = new CSVLayer("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.csv", {
-      copyright: "USGS.gov"
-    });
-    var orangeRed = new Color([238, 69, 0, 0.5]); // hex is #ff4500
-    var marker = new SimpleMarkerSymbol("solid", 15, null, orangeRed);
-    var renderer = new SimpleRenderer(marker);
-    csv.setRenderer(renderer);
-    var template = new InfoTemplate("${type}", "${place}");
-    csv.setInfoTemplate(template);
-
-    map.addLayer(csv);
-    search.startup();
-  });
-</script>
 {% endblock %}
 
 {% block content %}
-<div id="search"></div>
-<div id="map"></div>
+<div id="map">
+  <style>
+    .embed-container {
+      position: relative;
+      padding-bottom: 80%;
+      height: 0;
+      max-width: 100%;
+    }
+
+    .embed-container iframe,
+    .embed-container object,
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    small {
+      position: absolute;
+      z-index: 40;
+      bottom: 0;
+      margin-bottom: -15px;
+    }
+  </style>
+  <div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="test"
+      src="//www.arcgis.com/apps/Embed/index.html?webmap=5e70c2f9d4df4457bd1371c8a0feef2b&extent=14.4729,40.743,14.5045,40.757&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+  </div>
+</div>
 {% endblock %}
