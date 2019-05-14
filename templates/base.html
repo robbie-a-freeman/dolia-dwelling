@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}{% endblock %} - Division 1 CS:GO</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://js.arcgis.com/3.28/esri/themes/calcite/dijit/calcite.css">
+  <link rel="stylesheet" href="https://js.arcgis.com/3.28/esri/css/esri.css">
+  <!--<link rel="stylesheet" href="../static/css/customstyle.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  {% block head %}{% endblock %}
+
+</head>
+<body class="calcite">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Dolia Dwelling</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!--<li><a href="/about">About</a></li> -->
+        <li><a href="mailto@caroline.cheung@princeton.edu">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+<footer class="container-fluid text-center">
+  <p><i>Articles and web design by Robbie "d1ng" Freeman</i></p>
+</footer>
+
+</body>
+</html>
